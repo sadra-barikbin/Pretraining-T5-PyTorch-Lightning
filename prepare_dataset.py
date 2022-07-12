@@ -112,7 +112,7 @@ def main(tokenizer_file: str = typer.Option("t5-base", help="T5 tokenizer used f
          mask_probability: float = typer.Option(0.15, help="Probability of masking a token in a sentence.")):
     """This script preprocesses and tokenizes a standardized pretraining text Dataset (a file with a sentence in each
     line) into a set of tokenized files for training and validating the text2text model."""
-    tokenizer = T5TokenizerFast(tokenizer_file=tokenizer_file)
+    tokenizer = T5TokenizerFast(tokenizer_file=tokenizer_file, unk_token="[UNK]", pad_token="[PAD]", eos_token="[SEP]")
     global dot_token, dot_token_1, mask_tokens
     dot_token = tokenizer.convert_tokens_to_ids(["."])[0]
     dot_token_1 = tokenizer.convert_tokens_to_ids([")."])[0]
