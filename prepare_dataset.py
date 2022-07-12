@@ -12,8 +12,8 @@ import typer
 from tqdm import tqdm
 from transformers import T5TokenizerFast
 
-DATA_FILE = "data/cord19-standard.txt"
-DATASET_CACHE_PATH = Path("dataset_cache/")
+DATA_FILE = "/content/drive/My Drive/T5/Data/cleaned_150_000_text_common_crawl.txt"
+DATASET_CACHE_PATH = Path("/content/drive/My Drive/T5 Pytorch/dataset_cache/")
 DATASET_CACHE_PATH.mkdir(exist_ok=True, parents=True)
 
 dot_token: int
