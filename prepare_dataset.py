@@ -125,7 +125,7 @@ def main(tokenizer_file: str = typer.Option("t5-base", help="T5 tokenizer used f
         n = 100000  # size of batches of sentences from input file. ~=100mb chunks
         batch_counter, file_counter, words_counter = 1, 1, 0
         input_ids, target_ids = [], []
-        for sentence_batch in iter(lambda: tuple(islice(in_file, n)), ()):  # tuples of islices size n until tuple ()
+        for sentence_batch in iter(lambda: list(islice(in_file, n)), ()):  # tuples of islices size n until tuple ()
             print(f"Processing batch {batch_counter} of {math.ceil(number_lines / n)}.")
             inputs_batch = tokenizer.batch_encode_plus(sentence_batch, return_attention_mask=False, verbose=False)[
                 "input_ids"]  # performance bottleneck 1 here
